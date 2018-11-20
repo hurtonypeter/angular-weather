@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   form = new FormGroup({
-    username: new FormControl(''),
+    username: new FormControl('', [Validators.required]),
     password: new FormControl('')
   });
 
@@ -20,10 +20,13 @@ export class LoginComponent {
     private authService: AuthService) { }
 
   login(): void {
-    if (this.authService.login(this.form.value.username, this.form.value.password)) {
+    if (this.authService.login(this.username.value, this.password.value)) {
       this.router.navigate(['']);
     } else {
       this.form.controls['password'].setErrors({ 'incorrect': true });
     }
   }
+
+  get username() { return this.form.get('username'); }
+  get password() { return this.form.get('password'); }
 }
