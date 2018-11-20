@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-content>
+      <img src="/assets/logo.jpg" />
+      <h1>Angular Weather App</h1>
+      <form (ngSubmit)="login()" [formGroup]="form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="full-width">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
