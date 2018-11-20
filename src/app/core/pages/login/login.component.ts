@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,15 @@ export class LoginComponent {
     password: new FormControl('')
   });
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService) { }
 
   login(): void {
-    this.router.navigate(['']);
+    if (this.authService.login(this.form.value.username, this.form.value.password)) {
+      this.router.navigate(['']);
+    } else {
+      this.form.controls['password'].setErrors({ 'incorrect': true });
+    }
   }
 }
