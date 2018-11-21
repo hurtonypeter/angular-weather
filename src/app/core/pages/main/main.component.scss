@@ -1,0 +1,35 @@
+:host {
+    &>div {
+        height: 100vh;
+        text-align: center;
+    }
+    .mat-card {
+        padding:0;
+        min-width: 60%;
+    }
+    /deep/ {
+        .mat-tab-group {
+            flex-direction: row;
+        }
+        .mat-tab-header {
+          border-bottom: none;
+        }
+        .mat-tab-header-pagination {
+            display: none !important;
+        }
+        .mat-tab-labels {
+            flex-direction: column;
+            .mat-tab-label-active {
+                font-weight: 800;
+            }
+        }
+        .mat-ink-bar {
+            height: 100%;
+            left: 98% !important;
+        }
+        .mat-tab-body-wrapper {
+            flex: 1 1 auto;
+            padding: 16px;
+        }
+    }
+}
